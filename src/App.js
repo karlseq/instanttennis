@@ -16,6 +16,16 @@ function App() {
     stat: ""
   })
 
+  const dictionary = new Map([
+    ['aces', 'Average Aces Per Match'],
+    ['doubleFaults', 'Average Double Faults Per Match'],
+    ['overallServe', 'Overall Serve Percentage'],
+    ['firstIn', 'First Serve In Percentage'],
+    ['firstWon', 'First Serve Points Won'],
+    ['secondWon', 'Second Serve Points Won'],
+    ['break', 'Break Points Saved']
+  ]);
+
   const handleChange = (event) => {
     console.log("in handle change")
     console.log(event.target.value)
@@ -44,7 +54,7 @@ const handleSubmit = async (event) => {
       console.log("successful response")
       console.log(data.res[0])
       const props = {
-        title: ''+formValues.lastName+' '+formValues.stat,
+        title: ''+formValues.lastName+"'s "+dictionary.get(formValues.stat)+' in '+formValues.year,
         value: data.res[0]
       }
       const MyPopUp = () => {
@@ -84,8 +94,8 @@ const handleSubmit = async (event) => {
                     <option value="doubleFaults">Average Double Faults per Match</option>
                     <option value="overallServe">Overall Serve Percentage</option>
                     <option value="firstIn">First Serve Percentage In</option>
-                    <option value="firstWon">First Serve Won</option>
-                    <option value="secondWon">Second Serve Won</option>
+                    <option value="firstWon">First Serve Points Won</option>
+                    <option value="secondWon">Second Serve Points Won</option>
                     <option value="break">Break Points Saved</option>
                   </select>
                   <br></br>
